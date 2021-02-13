@@ -27,12 +27,24 @@
     <jsp.version>2.2.1</jsp.version>
     <jstl.version>1.2</jstl.version>
     <servlet.version>4.0.1</servlet.version>
+    <!-- connection pool version-->
+    <com.zaxxer.hikaricp-version>3.4.5</com.zaxxer.hikaricp-version>
+    <!-- 롬복 버전-->
+    <org.projectlombok-version>1.18.16</org.projectlombok-version>
+    <!-- 하이퍼네이트 버전-->
+    <org.hibernate-version>5.4.24.Final</org.hibernate-version>
+    <!-- QueryDSL 버전 -->
+    <querydsl-version>4.3.1</querydsl-version>
+    <!-- mysql connector 버전-->
+    <mysql-version>8.0.22</mysql-version>
+    <!-- h2DB 버전-->
+    <com.h2database-version>1.4.200</com.h2database-version>
 
 
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
   <dependencies>
@@ -60,11 +72,17 @@
       <version>${org.springframework-version}</version>
     </dependency>
 
-    		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-jdbc</artifactId>
-			<version>${org.springframework-version}</version>
-		</dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>${org.springframework-version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-orm</artifactId>
+      <version>${org.springframework-version}</version>
+    </dependency>
 
     <!-- Spring security -->
     <dependency>
@@ -154,6 +172,60 @@
       <version>${org.springframework-version}</version>
     </dependency>
 
+    <!-- hikari connection pool -->
+    <dependency>
+      <groupId>com.zaxxer</groupId>
+      <artifactId>HikariCP</artifactId>
+      <version>${com.zaxxer.hikaricp-version}</version>
+    </dependency>
+
+    <!-- lombok -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${org.projectlombok-version}</version>
+      <optional>true</optional>
+    </dependency>
+
+    <!-- jpa 표준을 포함하는 hibernate-->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-entitymanager</artifactId>
+      <version>${org.hibernate-version}</version>
+    </dependency>
+
+    <!-- queryDSL -->
+		<dependency>
+			<groupId>com.querydsl</groupId>
+			<artifactId>querydsl-apt</artifactId>
+			<version>${querydsl-version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.querydsl</groupId>
+			<artifactId>querydsl-jpa</artifactId>
+			<version>${querydsl-version}</version>
+		</dependency>
+
+    <!-- h2 dev용 -->
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>${com.h2database-version}</version>
+    </dependency>
+
+    <!-- mysql connector -->
+    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>${mysql-version}</version>
+    </dependency>
+
+
+
+
 
 
   </dependencies>
@@ -163,6 +235,7 @@
 
   <build>
     <finalName>ROOT</finalName>
+
     <pluginManagement>      <!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>
@@ -194,6 +267,28 @@
           <artifactId>maven-deploy-plugin</artifactId>
           <version>2.8.2</version>
         </plugin>
+
+
+
+<plugin>
+				<groupId>com.mysema.maven</groupId>
+				<artifactId>apt-maven-plugin</artifactId>
+				<version>1.1.3</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>process</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>target/generated-sources/java</outputDirectory>
+							 <!--하이버네이트는 아래 프로세서 사용-->
+							<!--<processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>-->
+							<processor>com.querydsl.apt.hibernate.HibernateAnnotationProcessor</processor>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
       </plugins>
     </pluginManagement>
   </build>
