@@ -145,6 +145,13 @@
       <version>${com.fasterxml.jackson.core-version}</version>
     </dependency>
 
+    <!-- jwt 라이브러리 -->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+
     <!-- 로깅 SLF4J & LogBack -->
     <dependency>
       <groupId>org.slf4j</groupId>
