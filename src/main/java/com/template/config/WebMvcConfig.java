@@ -10,7 +10,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-public class WebConfig implements WebMvcConfigurer{
+public class WebMvcConfig implements WebMvcConfigurer{
     
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer){
