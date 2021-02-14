@@ -16,6 +16,10 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import lombok.extern.slf4j.Slf4j;
+
+
+@Slf4j
 @Configuration
 @EnableTransactionManagement
 public class JPAConfig {
@@ -62,6 +66,7 @@ public class JPAConfig {
     @Bean(name = "emf")
     @Profile({"dev", "default"})
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryDev() {
+        log.info("initialize Dev EntityManagerFactoryBean...");
         LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
         emf.setDataSource(dataSource); // 데이터소스 설정
 
@@ -76,6 +81,7 @@ public class JPAConfig {
     @Bean(name = "emf")
     @Profile({"production"})
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryProd() {
+        log.info("initialize Production EntityManagerFactoryBean...");
         LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
         emf.setDataSource(dataSource); // 데이터소스 설정
 
@@ -89,6 +95,7 @@ public class JPAConfig {
 
     @Bean
     public PlatformTransactionManager transactionManager(LocalContainerEntityManagerFactoryBean emf) {
+        log.info("initialize TransactionManager...");
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(emf.getObject());
 

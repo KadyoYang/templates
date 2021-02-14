@@ -4,12 +4,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Configuration
 public class CommonConfig {
 
-
+    
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer(){
+        log.info("initialize propertySourcesPlaceholderConfigurer...");
         return new PropertySourcesPlaceholderConfigurer();
         /*
 

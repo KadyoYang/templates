@@ -11,6 +11,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 
+import lombok.extern.slf4j.Slf4j;
+
+
+@Slf4j
 @Configuration
 @Profile({"production"})
 @PropertySource("classpath:META-INF/prodDB.properties") 
@@ -26,9 +30,10 @@ public class ProdDBConfig {
 
     @Bean
     public DataSource dataSource(){
+        log.info("initialize Production DataSource...");
         HikariConfig hikariConfig = new HikariConfig();
         
-        hikariConfig.setDataSourceClassName(className);
+        hikariConfig.setDriverClassName(className);
         hikariConfig.setJdbcUrl(jdbcUrl);
         hikariConfig.setUsername(username);
         hikariConfig.setPassword(password);
