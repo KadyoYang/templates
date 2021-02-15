@@ -135,7 +135,7 @@ RUN set -eux; \
 		exit 1; \
 	fi
 
-
+RUN mkdir -p files
 # locate ROOT.war
 COPY ./target/ROOT.war webapps
 

@@ -1,29 +1,31 @@
+version: '3'
+
+volumes:
+  postgres_db: {}
+  backend_db: {}
+
 services : 
-  postgre:
+  db:
     image : postgres
     volumes:
-      - ./docker/data:/var/lib/postgresql/data
+      - postgres_db:/var/lib/postgresql/data
+#      - ./dockerVolumes/postgres:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB= myfolio
-      - POSTGRES_USER= test
-      - POSTGRES_PASSWORD= test123
-      - POSTGRES_INITDB_ARGS= --encoding=UTF-8
+      - POSTGRES_DB=sample
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=qwer1234
+      - POSTGRES_INITDB_ARGS=--encoding=UTF-8
 
-  django:
+  backend:
     build:
       context: .
-      dockerfile: ./dockerfiles/Dockerfile-dev
+      dockerfile: ./Dockerfile
     environment:
-      - DJANGO_DEBUG= True
-      - DJANGO_DB_HOST= posrgre
-      - DJANGO_DB_PORT= 5432
-      - DJANGO_DB_NAME= myfolio
-      - DJANGO_DB_USERNAME= test
-      - DJANGO_DB_PASSWORD= test123
-      - DJANGO_SECRET_KEY= 세팅 파일의 시크릿키 
+      - SPRING_PROFILES_ACTIVE=dev
     ports:
-      - "8000:8000"
-    command:
-      - python manage.py runserver
+      - "80:8080"
+#    command:
+#      - /usr/local/tomcat/catalina.sh run
     volumes : 
-      - ./:/myfolio/
+      - backend_db:/usr/local/tomcat/files
+#      - ./dockerVolumes/backend:/var/files

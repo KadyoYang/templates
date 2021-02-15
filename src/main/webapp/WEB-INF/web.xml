@@ -16,13 +16,14 @@
 	</context-param>
 
 	<!-- 프로파일 
-	dev, default(h2, hibernate query logging)
-	또는 
-	production (mysql 음,)-->
-	<context-param>
+	dev, default
+		(h2, hibernate query logging) 사용
+	production 
+		(postgres ) 사용-->
+	<!-- <context-param>
 		<param-name>spring.profiles.active</param-name>
 		<param-value>dev</param-value>
-	</context-param>
+	</context-param> -->
 
 
 	<servlet>

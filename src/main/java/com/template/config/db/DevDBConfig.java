@@ -29,9 +29,9 @@ public class DevDBConfig {
     private String className;
     @Value("${jdbc.url}")
     private String jdbcUrl;
-    @Value("${jdbc.username")
+    @Value("${jdbc.username}")
     private String username;
-    @Value("${jdbc.password")
+    @Value("${jdbc.password}")
     private String password;
 
     @Bean

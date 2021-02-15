@@ -45,7 +45,7 @@ public class JPAConfig {
     // Prod 용 설정
     Properties prodProperties() {
         Properties properties = new Properties();
-        properties.setProperty("hibernate.dialect","org.hibernate.dialect.MySQL8Dialect");
+        properties.setProperty("hibernate.dialect","org.hibernate.dialect.PostgreSQLDialect");
 
         properties.setProperty("open-in-view", "false");
         properties.setProperty("hibernate.id.new_generator_mappings", "true");
