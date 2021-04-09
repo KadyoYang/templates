@@ -247,7 +247,25 @@
 </dependency>
 
 
-
+<!-- 빈 검증 -->
+<!-- jsr 380 https://www.baeldung.com/javax-validation -->
+<dependency>
+    <groupId>javax.validation</groupId>
+    <artifactId>validation-api</artifactId>
+    <version>2.0.1.Final</version>
+</dependency>
+<!-- 하이버네이트 밸리데이터에 위엣것도 포함이어서 위엣거 생략 가능-->
+<dependency>
+    <groupId>org.hibernate.validator</groupId>
+    <artifactId>hibernate-validator</artifactId>
+    <version>6.0.13.Final</version>
+</dependency>
+<!-- 바이올레이션 메시지안에 익스프레션을 쓸수있게한다-->
+<dependency>
+    <groupId>org.glassfish</groupId>
+    <artifactId>javax.el</artifactId>
+    <version>3.0.0</version>
+</dependency>
 
 
   </dependencies>
