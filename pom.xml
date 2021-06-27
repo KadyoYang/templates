@@ -73,6 +73,11 @@
       <artifactId>spring-webmvc</artifactId>
       <version>${org.springframework-version}</version>
     </dependency>
+        <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-jpa</artifactId>
+      <version>2.3.9.RELEASE</version>
+    </dependency>
 
     <dependency>
       <groupId>org.springframework</groupId>
@@ -265,6 +270,65 @@
     <groupId>org.glassfish</groupId>
     <artifactId>javax.el</artifactId>
     <version>3.0.0</version>
+</dependency>
+
+
+<!-- 의심가는놈 한놈 한놈-->
+<dependency>
+    <groupId>com.google.firebase</groupId>
+    <artifactId>firebase-admin</artifactId>
+    <version>7.1.1</version>
+</dependency>
+
+
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
+      <version>2.0.1.Final</version>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate.validator</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>6.0.22.Final</version>
+    </dependency>
+    <dependency>
+    <groupId>org.hibernate.validator</groupId>
+      <artifactId>hibernate-validator-cdi</artifactId>
+      <version>6.0.22.Final</version>
+    </dependency>
+    <!-- 바이올레이션 메시지안에 익스프레션을 쓸수있게한다-->
+    <dependency>
+      <groupId>org.glassfish</groupId>
+      <artifactId>javax.el</artifactId>
+      <version>3.0.0</version>
+    </dependency>
+    <!-- Model Mapper-->
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>2.3.5</version>
+		</dependency>
+    <!-- swagger -->
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger-ui</artifactId>
+      <version>2.9.2</version>
+    </dependency>
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger2</artifactId>
+      <version>2.9.2</version>
+    </dependency>
+    <dependency>
+    <groupId>io.springfox</groupId>
+    <artifactId>springfox-bean-validators</artifactId>
+    <version>2.9.2</version>
+</dependency>
+
+<dependency>
+  <groupId>org.hyperledger.fabric</groupId>
+  <artifactId>fabric-gateway-java</artifactId>
+  <version>2.2.0</version>
 </dependency>
 
 
