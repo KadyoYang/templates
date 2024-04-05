@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Test Main</title>
+
+    <link href="/styles/todo/index.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h2>todo detail</h2>
+
+    <% const updateUrl = "/todo/update/"+todo.id %>
+
+    <form
+      name="update_todo"
+      method="post"
+      action="<%=updateUrl%>"
+      class="todo_create_form"
+    >
+      <h3>create new todo</h3>
+      <input
+        type="number"
+        placeholder="todo id"
+        name="id"
+        value="<%= todo.id %>"
+        disabled="true"
+      />
+      <input
+        type="text"
+        placeholder="todo title"
+        name="title"
+        value="<%= todo.title %>"
+      />
+      <textarea placeholder="todo content" name="content">
+<%= todo.content %></textarea
+      >
+      <button type="submit">update</button>
+    </form>
+  </body>
+</html>

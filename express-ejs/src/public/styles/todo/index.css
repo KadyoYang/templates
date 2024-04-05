@@ -1,0 +1,15 @@
+.todo_list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  > div {
+    border: solid black 1px;
+  }
+}
+
+.todo_create_form {
+  display: flex;
+  flex-direction: column;
+  border: solid black 1px;
+}

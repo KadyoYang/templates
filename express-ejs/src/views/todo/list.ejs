@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Test Main</title>
+
+    <link href="/styles/todo/index.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h2>todo list</h2>
+    <div class="todo_list">
+      <% for(const todo of todos){ %> <% const redirectUrl="/todo/" + todo.id %>
+      <% const deleteUrl = "/todo/delete/"+todo.id %>
+      <div onclick="location.href='<%= redirectUrl %>'">
+        <div>id: <%= todo.id %></div>
+        <div>title: <%= todo.title %></div>
+        <div>content: <%= todo.content %></div>
+        <form name="delete_todo" method="post" action="<%=deleteUrl%>">
+          <button type="submit">delete</button>
+        </form>
+      </div>
+      <% } %>
+    </div>
+
+    <br />
+    <br />
+
+    <form
+      name="insert_todo"
+      method="post"
+      action="/todo"
+      class="todo_create_form"
+    >
+      <h3>create new todo</h3>
+      <input type="text" placeholder="todo title" name="title" />
+      <textarea placeholder="todo content" name="content"></textarea>
+      <button type="submit">create</button>
+    </form>
+  </body>
+</html>
